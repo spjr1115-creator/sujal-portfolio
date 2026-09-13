@@ -7,16 +7,25 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="w-full max-w-[1120px] mx-auto px-6 md:px-10 py-12 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#D7E2EA]/60 select-none">
-      <span>© 2026 Sujal Panjiyar</span>
-      <span>Learning • Building • Evolving</span>
-      <a
-        href="#home"
-        onClick={scrollToTop}
-        className="hover:text-white transition-colors duration-200"
-      >
-        Back to top ↑
-      </a>
+    <footer className="w-full bg-[#0C0C0C] border-t border-white/10 select-none">
+      <div className="max-w-[1240px] mx-auto px-6 md:px-12 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#D7E2EA]/50 uppercase tracking-widest">
+        <div className="flex items-center gap-3">
+          <span className="font-bold text-white tracking-tight">SUJAL.</span>
+          <span>© 2026 SUJAL PANJIYAR</span>
+        </div>
+
+        <a
+          href="#home"
+          onClick={scrollToTop}
+          className="inline-flex items-center gap-1 text-[#BBCCD7] hover:text-white transition-colors duration-200 cursor-pointer"
+          aria-label="Scroll back to top of page"
+        >
+          <span>BACK TO TOP</span>
+          <span>↑</span>
+        </a>
+      </div>
     </footer>
   );
 };
+
+export default Footer;
