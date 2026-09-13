@@ -42,10 +42,10 @@ export const About: React.FC = () => {
   });
 
   const p1Text =
-    "I'm Sujal, a Computer Science Engineering student and developer who enjoys turning ideas into practical digital experiences. I build web applications, experiment with emerging technologies, and enjoy solving real-world problems through code.";
+    "I'm Sujal, a Computer Science Engineering student, developer, and builder. I focus on building practical web experiences and software projects while continuously expanding my technical foundations.";
 
   const p2Text =
-    "My work spans web development, interactive interfaces, dashboards, and technology-driven projects. I'm constantly learning, building, and looking for better ways to turn concepts into something people can actually use.";
+    "Through hands-on development and experimentation, I turn ideas into working applications. I enjoy building responsive web systems, exploring emerging technologies, and learning by shipping real projects.";
 
   const p1Words = p1Text.split(' ');
   const p2Words = p2Text.split(' ');
@@ -158,14 +158,16 @@ export const About: React.FC = () => {
             </span>
           </div>
 
-          {/* Detail Item 3 */}
+          {/* Detail Item 3 — CURRENTLY Micro-Content */}
           <div className="flex flex-col gap-1.5 sm:col-span-2 lg:col-span-1">
-            <span className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D7E2EA]/50 uppercase">
-              FOCUS & EXPLORATION
+            <span className="text-[10px] sm:text-xs font-mono tracking-widest text-[#BBCCD7] uppercase font-semibold">
+              CURRENTLY
             </span>
-            <span className="text-sm sm:text-base font-medium tracking-wide text-[#BBCCD7]">
-              WEB • AI • IOT • SOFTWARE ARCHITECTURE
-            </span>
+            <div className="text-xs sm:text-sm font-mono tracking-wide text-[#D7E2EA]/90 flex flex-col gap-1">
+              <span>• Building web applications</span>
+              <span>• Exploring AI & IoT</span>
+              <span>• Learning by shipping projects</span>
+            </div>
           </div>
         </FadeIn>
       </div>

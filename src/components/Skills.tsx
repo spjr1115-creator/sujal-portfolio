@@ -17,40 +17,55 @@ const servicesData: ServiceItem[] = [
     title: 'WEB DEVELOPMENT',
     status: 'BUILDING WITH',
     description:
-      'Build responsive websites and web applications with modern frontend technologies, clean component architecture, and solid foundations.',
-    tags: ['React', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS'],
+      'Building responsive websites and web applications with modern frontend technologies.',
+    tags: ['React', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS', 'Firebase'],
   },
   {
     id: '02',
-    title: 'UI & INTERACTIVE EXPERIENCES',
+    title: 'INTERACTIVE EXPERIENCES',
     status: 'BUILDING WITH',
     description:
-      'Create polished interfaces with thoughtful interaction, smooth motion, and responsive layouts that prioritize user experience.',
+      'Creating interfaces with thoughtful interaction, animation and responsive design.',
     tags: ['React', 'Framer Motion', 'Tailwind CSS', 'CSS Animations'],
   },
   {
     id: '03',
-    title: 'SOFTWARE & APPLICATION LOGIC',
+    title: 'SOFTWARE DEVELOPMENT',
     status: 'WORKING WITH',
     description:
-      'Build practical applications focused on solving specific problems, algorithmic logic, and structured software development.',
-    tags: ['Java', 'Python', 'JavaScript', 'C/C++'],
+      'Developing practical applications while strengthening my foundations in Java, Python, C and C++.',
+    tags: ['Java', 'Python', 'C', 'C++', 'Git', 'GitHub'],
   },
   {
     id: '04',
-    title: 'AI, DATA & AUTOMATION',
-    status: 'EXPLORING & LEARNING',
+    title: 'AI / DATA / AUTOMATION',
+    status: 'EXPLORING',
     description:
-      'Experiment with intelligent applications, data-driven solutions, webhooks, and automation to streamline workflows.',
+      'Exploring intelligent applications, data-driven solutions and automation.',
     tags: ['Python', 'JavaScript', 'Web APIs', 'Data Concepts'],
   },
   {
     id: '05',
-    title: 'IOT & CONNECTED SYSTEMS',
-    status: 'BUILDING & EXPERIMENTING',
+    title: 'IOT / CONNECTED SYSTEMS',
+    status: 'EXPLORING',
     description:
-      'Build and experiment with technology that connects web software with real-world data tracking, location services, and live telemetry.',
-    tags: ['Firebase', 'IoT Concepts', 'GPS / Location', 'Webhooks'],
+      'Experimenting with systems that connect software with real-world devices, including location and safety-focused applications.',
+    tags: ['IoT', 'Firebase', 'Location & SOS', 'Webhooks'],
+  },
+];
+
+const skillCategories = [
+  {
+    category: 'BUILDING WITH',
+    skills: ['React', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS', 'Firebase'],
+  },
+  {
+    category: 'WORKING WITH',
+    skills: ['Java', 'Python', 'C', 'C++', 'Git', 'GitHub'],
+  },
+  {
+    category: 'EXPLORING',
+    skills: ['AI', 'IoT', 'Framer Motion'],
   },
 ];
 
@@ -87,7 +102,7 @@ export const Skills: React.FC = () => {
 
           <FadeIn delay={0.2} direction="up" distance={20}>
             <p className="text-base sm:text-xl text-[#D7E2EA]/75 font-light leading-relaxed max-w-[720px] mt-2">
-              From interactive web experiences to practical software systems, I like turning ideas into things people can actually use.
+              Building responsive websites, practical applications, and technology-driven projects.
             </p>
           </FadeIn>
         </div>
@@ -146,6 +161,29 @@ export const Skills: React.FC = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Structured Skill Categories Grid */}
+        <FadeIn delay={0.25} direction="up" distance={30} className="pt-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/10">
+            {skillCategories.map((cat) => (
+              <div key={cat.category} className="flex flex-col gap-4">
+                <span className="text-xs font-mono tracking-widest text-[#BBCCD7] uppercase font-bold border-b border-white/10 pb-2">
+                  {cat.category}
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {cat.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1 text-xs font-mono tracking-wide rounded-md bg-white/5 border border-white/10 text-[#D7E2EA]"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
 
         {/* Section Understated Footer Statement */}
         <FadeIn

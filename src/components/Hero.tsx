@@ -45,15 +45,15 @@ export const Hero: React.FC = () => {
       {/* 4. Bottom Row: Bottom-Left Description & Bottom-Right Contact Button */}
       <div className="relative z-20 w-full px-6 md:px-10 pb-7 sm:pb-8 md:pb-10 flex flex-col md:flex-row justify-between items-end gap-6">
         {/* Bottom-Left Content */}
-        <FadeIn delay={0.35} direction="up" distance={20} className="flex flex-col gap-2 max-w-[160px] sm:max-w-[220px] md:max-w-[260px]">
+        <FadeIn delay={0.35} direction="up" distance={20} className="flex flex-col gap-2 max-w-[200px] sm:max-w-[260px] md:max-w-[320px]">
           <div className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D7E2EA]/60 uppercase">
             CSE STUDENT • DEVELOPER • BUILDER
           </div>
           <p
-            style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}
+            style={{ fontSize: 'clamp(0.75rem, 1.3vw, 1.25rem)' }}
             className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug"
           >
-            A CSE student driven by building practical software, exploring new technologies, and turning ideas into working products.
+            I build practical web experiences and technology-driven projects that turn ideas into something people can actually use.
           </p>
         </FadeIn>
 
