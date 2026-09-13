@@ -1,108 +1,341 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { FadeIn } from './FadeIn';
+import { ExternalLink, Github, Layers, ShieldAlert, Leaf, Wallet, LayoutDashboard } from 'lucide-react';
 
-interface Project {
+export interface ProjectData {
   id: string;
-  index: string;
+  number: string;
   title: string;
+  category: string;
+  badge: string;
   description: string;
   tags: string[];
-  link: string;
-  linkText: string;
-  category: string;
+  githubUrl: string;
+  liveUrl?: string;
+  accentColor: string;
+  gradientBg: string;
+  icon: React.ReactNode;
 }
 
-const projectsList: Project[] = [
+const projects: ProjectData[] = [
   {
-    id: 'expense-tracker',
-    index: '01 / LIVE PROJECT',
-    title: 'Expense Tracker',
-    description: 'A modern personal finance dashboard for tracking income, expenses, budgets and spending analytics with cloud-backed data.',
-    tags: ['JavaScript', 'Firebase', 'Firestore', 'Chart.js'],
-    link: 'https://spjr1115-creator.github.io/expense-tracker/',
-    linkText: 'View Live Project ↗',
-    category: 'Web App',
+    id: 'zayathon',
+    number: '01',
+    title: 'Zayathon',
+    category: 'Hackathon & Builder Platform',
+    badge: 'HACKATHON PLATFORM',
+    description:
+      'A hackathon and team-building platform designed to help participants discover hackathons, form project teams, submit entries, and collaborate with fellow builders.',
+    tags: ['React', 'Firebase', 'Tailwind CSS', 'Firestore'],
+    githubUrl: 'https://github.com/spjr1115-creator/Zayathon',
+    accentColor: '#B600A8',
+    gradientBg: 'from-[#1E022A] via-[#390A50] to-[#0C0C0C]',
+    icon: <Layers className="w-5 h-5 text-[#B600A8]" />,
   },
   {
-    id: 'neer-safety-band',
-    index: '02 / SAFETY PROJECT',
+    id: 'ecoquest',
+    number: '02',
+    title: 'EcoQuest',
+    category: 'Gamified Environmental Tracker',
+    badge: 'SUSTAINABILITY',
+    description:
+      'An interactive environmental action platform that gamifies daily sustainability habits, tracks eco-friendly activities, and encourages environmental consciousness.',
+    tags: ['JavaScript', 'HTML5', 'CSS3', 'Local Storage'],
+    githubUrl: 'https://github.com/spjr1115-creator/EcoQuest',
+    accentColor: '#62e59a',
+    gradientBg: 'from-[#052C1C] via-[#0F4E30] to-[#0C0C0C]',
+    icon: <Leaf className="w-5 h-5 text-[#62e59a]" />,
+  },
+  {
+    id: 'neer',
+    number: '03',
     title: 'NEER Safety Band',
-    description: 'A safety-focused wearable concept combining SOS triggering, location tracking and Firebase-based emergency logging.',
-    tags: ['ESP32', 'GPS', 'Firebase', 'JavaScript'],
-    link: 'https://github.com/spjr1115-creator',
-    linkText: 'Explore Project ↗',
-    category: 'IoT & Hardware',
+    category: 'IoT Safety & SOS System',
+    badge: 'HARDWARE & IOT',
+    description:
+      'An IoT safety-focused wearable concept combining emergency SOS triggering, location tracking logging, and Firebase-backed alert notifications.',
+    tags: ['ESP32', 'GPS Location', 'Firebase', 'JavaScript', 'Webhooks'],
+    githubUrl: 'https://github.com/spjr1115-creator/NEER',
+    accentColor: '#78aaff',
+    gradientBg: 'from-[#0B1F42] via-[#17386D] to-[#0C0C0C]',
+    icon: <ShieldAlert className="w-5 h-5 text-[#78aaff]" />,
+  },
+  {
+    id: 'expense-tracker',
+    number: '04',
+    title: 'Expense Tracker',
+    category: 'Personal Finance Dashboard',
+    badge: 'FINANCE APP',
+    description:
+      'A modern personal finance dashboard for tracking income, expenses, monthly budgets, and spending analytics with cloud-backed data storage.',
+    tags: ['JavaScript', 'Firestore', 'Chart.js', 'CSS3'],
+    githubUrl: 'https://github.com/spjr1115-creator/expense-tracker',
+    liveUrl: 'https://spjr1115-creator.github.io/expense-tracker/',
+    accentColor: '#8d7bff',
+    gradientBg: 'from-[#25133B] via-[#461D69] to-[#0C0C0C]',
+    icon: <Wallet className="w-5 h-5 text-[#8d7bff]" />,
+  },
+  {
+    id: 'main-dashboard',
+    number: '05',
+    title: 'Main Dashboard',
+    category: 'Project Management Dashboard',
+    badge: 'WEB APP',
+    description:
+      'A centralized web application dashboard for managing developer projects, tracking repository progress, and organizing software development workflows.',
+    tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
+    githubUrl: 'https://github.com/spjr1115-creator/sujal-portfolio',
+    accentColor: '#BBCCD7',
+    gradientBg: 'from-[#15233C] via-[#23365B] to-[#0C0C0C]',
+    icon: <LayoutDashboard className="w-5 h-5 text-[#BBCCD7]" />,
   },
 ];
 
 export const Projects: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isReducedMotion = !!useReducedMotion();
+
   return (
-    <section id="projects" className="w-full max-w-[1120px] mx-auto px-6 md:px-10 py-24 text-[#D7E2EA]">
-      <FadeIn delay={0.1} direction="up">
-        <div className="flex items-center gap-3 text-xs tracking-widest uppercase font-mono text-[#B600A8] mb-4">
-          <span>03</span>
-          <span className="w-8 h-[1px] bg-[#B600A8]" />
-          <span>SELECTED WORK</span>
-        </div>
-      </FadeIn>
+    <section
+      id="projects"
+      ref={containerRef}
+      className="relative w-full py-24 sm:py-32 md:py-40 px-4 sm:px-6 md:px-12 bg-[#0C0C0C] text-[#D7E2EA] overflow-hidden select-none"
+    >
+      {/* Background ambient gradient lighting */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-r from-[#B600A8]/10 via-[#78aaff]/10 to-transparent blur-[160px] pointer-events-none z-0" />
 
-      <FadeIn delay={0.2} direction="up" className="mb-16">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
-          Things I've <span className="text-[#BBCCD7]">built.</span>
-        </h2>
-        <p className="text-[#D7E2EA]/60 font-light text-base">Real projects, real problems, real learning.</p>
-      </FadeIn>
+      {/* Grid background overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none z-0 opacity-40" />
 
-      <div className="space-y-16">
-        {projectsList.map((project, idx) => (
-          <FadeIn key={project.id} delay={0.2 + idx * 0.15} direction="up">
-            <article className="glass-panel p-8 sm:p-10 rounded-3xl border border-white/10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center hover:border-white/20 transition-all duration-300">
-              <div className="lg:col-span-7 flex flex-col justify-between h-full space-y-6">
-                <div>
-                  <span className="font-mono text-xs text-[#B600A8] tracking-wider uppercase font-semibold">
-                    {project.index}
-                  </span>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white mt-2 mb-4">{project.title}</h3>
-                  <p className="text-[#D7E2EA]/80 font-light text-base leading-relaxed mb-6">
-                    {project.description}
-                  </p>
-                </div>
-
-                <div>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-mono text-[#D7E2EA]/80"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-semibold tracking-wider uppercase text-white hover:text-[#B600A8] transition-colors duration-200"
-                  >
-                    {project.linkText}
-                  </a>
-                </div>
-              </div>
-
-              {/* Decorative Project Art Container */}
-              <div className="lg:col-span-5 aspect-video bg-[#08080C] rounded-2xl border border-white/10 p-6 flex flex-col justify-center items-center relative overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#B600A8]/20 via-transparent to-[#78aaff]/10 opacity-50 group-hover:opacity-80 transition-opacity" />
-                <div className="relative z-10 text-center space-y-2">
-                  <div className="font-mono text-xs text-[#BBCCD7]/60 uppercase tracking-widest">{project.category}</div>
-                  <div className="text-xl font-bold text-white">{project.title}</div>
-                </div>
-              </div>
-            </article>
+      <div className="max-w-[1280px] mx-auto w-full relative z-10 flex flex-col gap-12 sm:gap-20">
+        {/* Section Intro Header */}
+        <div className="flex flex-col gap-4 max-w-[900px] px-2 sm:px-0">
+          <FadeIn delay={0.1} direction="up" distance={20} className="flex items-center gap-3">
+            <span className="text-[11px] sm:text-xs font-mono tracking-widest text-[#BBCCD7]/70 uppercase">
+              03 // SELECTED WORK
+            </span>
+            <span className="h-[1px] w-12 bg-gradient-to-r from-[#BBCCD7]/40 to-transparent" />
           </FadeIn>
-        ))}
+
+          <FadeIn delay={0.15} direction="up" distance={25}>
+            <h2 className="hero-heading uppercase font-black tracking-tight leading-none text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-left">
+              SELECTED WORK
+            </h2>
+          </FadeIn>
+
+          <FadeIn delay={0.2} direction="up" distance={20}>
+            <p className="text-base sm:text-xl text-[#D7E2EA]/75 font-light leading-relaxed max-w-[720px] mt-2">
+              A selection of things I've built while learning, experimenting, and solving real problems through code.
+            </p>
+          </FadeIn>
+        </div>
+
+        {/* Stacked Project Cards Container */}
+        <div className="relative w-full flex flex-col gap-10 sm:gap-16 md:gap-24">
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+              total={projects.length}
+              isReducedMotion={isReducedMotion}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
 };
+
+interface ProjectCardProps {
+  project: ProjectData;
+  index: number;
+  total: number;
+  isReducedMotion: boolean;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, isReducedMotion }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ['start end', 'start start'],
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.6, 0.95, 1]);
+
+  return (
+    <motion.div
+      ref={cardRef}
+      style={isReducedMotion ? {} : { scale, opacity }}
+      className="sticky top-20 sm:top-24 md:top-28 w-full max-w-[1240px] mx-auto rounded-2xl sm:rounded-3xl border border-white/15 bg-[#0F0F12] overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-colors duration-300 hover:border-white/30"
+    >
+      <div className={`relative w-full bg-gradient-to-b ${project.gradientBg} p-6 sm:p-8 md:p-12 flex flex-col justify-between gap-8 md:gap-12 min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh]`}>
+        {/* Subtle grid pattern inside card */}
+        <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:32px_32px] opacity-10 pointer-events-none" />
+
+        {/* Card Header Row */}
+        <div className="relative z-10 flex justify-between items-center border-b border-white/10 pb-4 sm:pb-6">
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-sm sm:text-base font-bold text-white/50">
+              [{project.number} / 0{total}]
+            </span>
+            <span
+              style={{ color: project.accentColor }}
+              className="font-mono text-[10px] sm:text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md flex items-center gap-2"
+            >
+              {project.icon}
+              {project.badge}
+            </span>
+          </div>
+
+          <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-white/40">
+            <span>SUJAL PANJIYAR</span>
+            <span>•</span>
+            <span className="uppercase">{project.category}</span>
+          </div>
+        </div>
+
+        {/* Card Main Body Grid (Text Info Left, Visual Preview Right) */}
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center my-auto">
+          {/* Left Column: Text Information */}
+          <div className="lg:col-span-6 flex flex-col gap-5 sm:gap-6 justify-center">
+            <div>
+              <span className="font-mono text-xs text-[#BBCCD7]/60 tracking-widest uppercase mb-1 block">
+                {project.category}
+              </span>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase leading-tight">
+                {project.title}
+              </h3>
+            </div>
+
+            <p className="text-sm sm:text-base md:text-lg text-[#D7E2EA]/80 font-light leading-relaxed">
+              {project.description}
+            </p>
+
+            {/* Technology Tags */}
+            <div className="flex flex-wrap gap-2 pt-2">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 text-xs font-mono tracking-wide rounded-full bg-white/5 border border-white/10 text-[#D7E2EA] font-medium"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* Action Links */}
+            <div className="flex flex-wrap items-center gap-4 pt-4">
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 border border-white/20 text-xs sm:text-sm font-mono tracking-wider text-white uppercase font-semibold hover:bg-white hover:text-black transition-all duration-300 shadow-md group"
+              >
+                <Github className="w-4 h-4" />
+                <span>VIEW ON GITHUB</span>
+                <span className="group-hover:translate-x-1 transition-transform">↗</span>
+              </a>
+
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ backgroundColor: project.accentColor }}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-mono tracking-wider text-black uppercase font-bold hover:brightness-110 transition-all duration-300 shadow-lg group"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  <span>LIVE PROJECT</span>
+                  <span className="group-hover:translate-x-1 transition-transform">↗</span>
+                </a>
+              )}
+            </div>
+          </div>
+
+          {/* Right Column: Bespoke UI Frame Mockup Preview */}
+          <div className="lg:col-span-6 w-full">
+            <ProjectUIMockup project={project} />
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+/* Bespoke UI Window Frame Preview Representation */
+const ProjectUIMockup: React.FC<{ project: ProjectData }> = ({ project }) => {
+  return (
+    <div className="w-full aspect-[16/10] bg-[#09090C] rounded-xl sm:rounded-2xl border border-white/15 overflow-hidden shadow-2xl flex flex-col group relative">
+      {/* Mockup Browser Window Header */}
+      <div className="w-full bg-[#121216] border-b border-white/10 px-3 sm:px-4 py-2 sm:py-2.5 flex items-center justify-between z-10">
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500/80" />
+          <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500/80" />
+          <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500/80" />
+        </div>
+        <div className="bg-black/50 px-3 py-1 rounded-md text-[10px] sm:text-xs font-mono text-[#D7E2EA]/50 truncate max-w-[180px] sm:max-w-[260px] text-center border border-white/5">
+          {project.title.toLowerCase().replace(/\s+/g, '')}.app
+        </div>
+        <div className="w-4" />
+      </div>
+
+      {/* Mockup Window Body Content Preview */}
+      <div className="relative flex-1 p-4 sm:p-6 flex flex-col justify-between overflow-hidden bg-gradient-to-br from-[#0D0D12] to-[#14141E]">
+        {/* Subtle grid background */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:1.5rem_1.5rem]" />
+
+        {/* Top Wireframe Bar */}
+        <div className="relative z-10 flex justify-between items-center border-b border-white/10 pb-3">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: project.accentColor }} />
+            <span className="text-xs font-mono font-bold text-white tracking-wider uppercase">
+              {project.title} WORKSPACE
+            </span>
+          </div>
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-white/70">
+            {project.badge}
+          </span>
+        </div>
+
+        {/* Center UI Layout Simulation */}
+        <div className="relative z-10 my-auto grid grid-cols-3 gap-3">
+          <div className="col-span-2 bg-white/[0.03] border border-white/10 rounded-lg p-3 space-y-2 group-hover:border-white/20 transition-colors">
+            <div className="flex justify-between items-center">
+              <span className="text-[10px] font-mono text-white/60 uppercase">SYSTEM STATUS</span>
+              <span className="text-[10px] font-mono font-bold" style={{ color: project.accentColor }}>ACTIVE</span>
+            </div>
+            <div className="h-2 w-3/4 bg-white/20 rounded-full" />
+            <div className="h-2 w-1/2 bg-white/10 rounded-full" />
+            <div className="pt-2 flex gap-1.5">
+              <div className="h-6 flex-1 rounded bg-white/5 border border-white/10" />
+              <div className="h-6 flex-1 rounded bg-white/5 border border-white/10" />
+            </div>
+          </div>
+
+          <div className="col-span-1 bg-white/[0.03] border border-white/10 rounded-lg p-3 flex flex-col justify-between group-hover:border-white/20 transition-colors">
+            <span className="text-[10px] font-mono text-white/60 uppercase">LOGS</span>
+            <div className="space-y-1">
+              <div className="h-1.5 w-full bg-white/20 rounded" />
+              <div className="h-1.5 w-2/3 bg-white/10 rounded" />
+              <div className="h-1.5 w-4/5 bg-white/15 rounded" />
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Feature Tags Pill Bar */}
+        <div className="relative z-10 pt-3 border-t border-white/10 flex justify-between items-center text-[10px] font-mono text-[#D7E2EA]/60">
+          <span>GITHUB REPOSITORY VERIFIED</span>
+          <span className="group-hover:translate-x-1 transition-transform" style={{ color: project.accentColor }}>
+            EXPLORE DETAILS ↗
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Projects;
