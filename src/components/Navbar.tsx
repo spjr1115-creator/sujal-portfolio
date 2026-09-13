@@ -26,7 +26,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <FadeIn delay={0} direction="down" distance={20} className="w-full relative z-50">
-      <header className="flex items-center justify-between px-6 md:px-10 pt-6 md:pt-8 text-[#D7E2EA] font-medium tracking-wider uppercase text-sm md:text-lg lg:text-[1.2rem] select-none">
+      <header className="flex items-center justify-between px-6 md:px-10 pt-6 md:pt-8 text-[#D7E2EA] font-medium tracking-wider uppercase text-sm md:text-lg lg:text-[1.4rem] select-none">
         {/* Brand Logo */}
         <a
           href="#home"
@@ -81,7 +81,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="absolute top-full left-0 w-full bg-[#0C0C0C]/95 backdrop-blur-md border-b border-white/10 px-6 py-6 flex flex-col gap-4 md:hidden">
+          <div className="absolute top-full left-0 w-full bg-[#0C0C0C]/95 backdrop-blur-md border-b border-white/10 px-6 py-6 flex flex-col gap-4 md:hidden z-50">
             {navItems.map((item) => (
               <a
                 key={item.label}
