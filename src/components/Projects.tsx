@@ -84,11 +84,6 @@ export const Projects: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isReducedMotion = !!useReducedMotion();
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start'],
-  });
-
   return (
     <section
       id="projects"
@@ -124,8 +119,8 @@ export const Projects: React.FC = () => {
           </FadeIn>
         </div>
 
-        {/* Stacked Project Cards List */}
-        <div className="relative w-full flex flex-col gap-12 sm:gap-20 md:gap-28">
+        {/* 3D Stacked Perspective Container */}
+        <div className="relative w-full flex flex-col gap-12 sm:gap-20 md:gap-28 [perspective:1200px] [transform-style:preserve-3d]">
           {projects.map((project, index) => (
             <ProjectCard
               key={project.id}
@@ -151,26 +146,49 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, isReducedMotion }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
-  // Track card progress through viewport for entry, sticky overlap, exit scale & parallax
+  // Track card progress through viewport for entry, 3D fold, exit & parallax
   const { scrollYProgress } = useScroll({
     target: cardRef,
     offset: ['start end', 'end start'],
   });
 
-  // Smooth scale down as card moves into sticky background stack (1.0 -> 0.94)
-  const scale = useTransform(scrollYProgress, [0.1, 0.4, 0.8, 1], [0.94, 1, 1, 0.93]);
-  const opacity = useTransform(scrollYProgress, [0.1, 0.35, 0.8, 1], [0.6, 1, 1, 0.85]);
-  const y = useTransform(scrollYProgress, [0.1, 0.4, 0.8, 1], [30, 0, 0, -20]);
+  // 3D Fold Transform Calculations (top edge tilts backward as card recedes)
+  const rotateX = useTransform(scrollYProgress, [0.1, 0.4, 0.75, 1], [6, 0, 0, -12]);
+  const scale = useTransform(scrollYProgress, [0.1, 0.4, 0.75, 1], [0.94, 1, 1, 0.93]);
+  const opacity = useTransform(scrollYProgress, [0.1, 0.35, 0.75, 1], [0.65, 1, 1, 0.8]);
+  const y = useTransform(scrollYProgress, [0.1, 0.4, 0.75, 1], [40, 0, 0, -30]);
 
-  // Subtle image parallax effect
-  const imageY = useTransform(scrollYProgress, [0, 1], ['0px', '-35px']);
+  // Lighting fold shadow overlay (fades in as card folds backward into light gradient)
+  const foldShadowOpacity = useTransform(scrollYProgress, [0.7, 1], [0, 0.4]);
+
+  // Inner screenshot preview subtle parallax transform
+  const imageY = useTransform(scrollYProgress, [0, 1], ['0px', '-30px']);
 
   return (
     <motion.div
       ref={cardRef}
-      style={isReducedMotion ? {} : { scale, opacity, y }}
-      className="sticky top-20 sm:top-24 md:top-28 w-full max-w-[1240px] mx-auto rounded-2xl sm:rounded-3xl border border-white/15 bg-[#0F0F12] overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.85)] backdrop-blur-xl transition-colors duration-300 hover:border-white/30"
+      style={
+        isReducedMotion
+          ? {}
+          : {
+              rotateX,
+              scale,
+              opacity,
+              y,
+              transformOrigin: '50% 0%',
+              transformStyle: 'preserve-3d',
+            }
+      }
+      className="sticky top-20 sm:top-24 md:top-28 w-full max-w-[1240px] mx-auto rounded-2xl sm:rounded-3xl border border-white/15 bg-[#0F0F12] overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.9)] backdrop-blur-xl transition-colors duration-300 hover:border-white/30"
     >
+      {/* 3D Fold Shadow Ambient Overlay */}
+      {!isReducedMotion && (
+        <motion.div
+          style={{ opacity: foldShadowOpacity }}
+          className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent pointer-events-none z-30 transition-opacity"
+        />
+      )}
+
       <div className={`relative w-full bg-gradient-to-b ${project.gradientBg} p-6 sm:p-8 md:p-12 flex flex-col justify-between gap-8 md:gap-12 min-h-[70vh] sm:min-h-[75vh] md:min-h-[78vh]`}>
         {/* Ambient grid texture inside card */}
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:32px_32px] opacity-10 pointer-events-none" />
