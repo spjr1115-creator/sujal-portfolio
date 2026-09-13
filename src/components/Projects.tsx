@@ -73,6 +73,7 @@ const projects: ProjectData[] = [
       'A web application for recording, organizing and visualizing personal expenses.',
     tags: ['JavaScript', 'Firestore', 'Chart.js', 'CSS3'],
     githubUrl: 'https://github.com/spjr1115-creator/expense-tracker',
+    liveUrl: 'https://spjr1115-creator.github.io/expense-tracker/',
     accentColor: '#8d7bff',
     gradientBg: 'from-[#25133B] via-[#461D69] to-[#0C0C0C]',
     icon: <Wallet className="w-5 h-5 text-[#8d7bff]" />,
