@@ -29,12 +29,16 @@ const Word: React.FC<WordProps> = ({ children, progress, range, isReducedMotion 
 };
 
 export const About: React.FC = () => {
-  const containerRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
   const isReducedMotion = !!useReducedMotion();
 
+  // Target the text container directly with a tight viewport offset:
+  // Starts when paragraph top is at 85% viewport (entering lower screen)
+  // Completes when paragraph top reaches 25% viewport (centered in main screen)
   const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start 0.85', 'end 0.35'],
+    target: textRef,
+    offset: ['start 0.85', 'start 0.25'],
   });
 
   const p1Text =
@@ -47,12 +51,18 @@ export const About: React.FC = () => {
   const p2Words = p2Text.split(' ');
   const totalWords = p1Words.length + p2Words.length;
 
-  const headerY = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const headerOpacity = useTransform(scrollYProgress, [0, 0.3, 0.9, 1], [0.3, 0.7, 0.7, 0.2]);
+  // Header subtle parallax mapped to section scroll
+  const { scrollYProgress: sectionProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const headerY = useTransform(sectionProgress, [0, 1], [0, -40]);
+  const headerOpacity = useTransform(sectionProgress, [0, 0.2, 0.8, 1], [0.3, 0.6, 0.6, 0.2]);
 
   return (
     <section
-      ref={containerRef}
+      ref={sectionRef}
       id="about"
       className="relative w-full min-h-screen py-24 sm:py-32 md:py-40 px-6 md:px-12 bg-[#0C0C0C] text-[#D7E2EA] overflow-hidden flex flex-col justify-between select-none"
     >
@@ -75,7 +85,7 @@ export const About: React.FC = () => {
         </div>
 
         {/* Scroll-Reveal Main Paragraph Container */}
-        <div className="max-w-[1100px] w-full">
+        <div ref={textRef} className="max-w-[1100px] w-full">
           {/* Tag & Subheading Indicator */}
           <FadeIn delay={0.1} direction="up" distance={20} className="mb-6 sm:mb-8 flex items-center gap-3">
             <span className="text-[11px] sm:text-xs font-mono tracking-widest text-[#BBCCD7]/70 uppercase">
@@ -90,8 +100,10 @@ export const About: React.FC = () => {
             style={{ fontSize: 'clamp(1.35rem, 3.2vw, 2.75rem)' }}
           >
             {p1Words.map((word, i) => {
-              const start = i / totalWords;
-              const end = (i + 1) / totalWords;
+              // Compressed word range mapping so reveal completes smoothly within 85% of progress
+              const step = 0.80 / totalWords;
+              const start = i * step;
+              const end = Math.min(1, start + 0.15);
               return (
                 <Word key={`p1-${i}`} progress={scrollYProgress} range={[start, end]} isReducedMotion={isReducedMotion}>
                   {word}
@@ -107,8 +119,9 @@ export const About: React.FC = () => {
           >
             {p2Words.map((word, i) => {
               const globalIdx = p1Words.length + i;
-              const start = globalIdx / totalWords;
-              const end = (globalIdx + 1) / totalWords;
+              const step = 0.80 / totalWords;
+              const start = globalIdx * step;
+              const end = Math.min(1, start + 0.15);
               return (
                 <Word key={`p2-${i}`} progress={scrollYProgress} range={[start, end]} isReducedMotion={isReducedMotion}>
                   {word}
