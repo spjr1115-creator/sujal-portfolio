@@ -16,6 +16,8 @@ body,
   color: #D7E2EA;
   font-family: 'Kanit', sans-serif;
   min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .app-wrapper {
