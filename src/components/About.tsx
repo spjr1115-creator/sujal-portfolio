@@ -1,34 +1,163 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { FadeIn } from './FadeIn';
 
-export const About: React.FC = () => {
+interface WordProps {
+  children: string;
+  progress: any;
+  range: [number, number];
+  isReducedMotion: boolean;
+}
+
+const Word: React.FC<WordProps> = ({ children, progress, range, isReducedMotion }) => {
+  const opacity = useTransform(progress, range, [0.18, 1]);
+  const color = useTransform(progress, range, ['rgba(215, 226, 234, 0.25)', 'rgba(215, 226, 234, 1)']);
+  const y = useTransform(progress, range, [4, 0]);
+
+  if (isReducedMotion) {
+    return <span className="inline-block mr-[0.28em] text-[#D7E2EA] opacity-100">{children}</span>;
+  }
+
   return (
-    <section id="about" className="w-full max-w-[1120px] mx-auto px-6 md:px-10 py-24 text-[#D7E2EA]">
-      <FadeIn delay={0.1} direction="up">
-        <div className="flex items-center gap-3 text-xs tracking-widest uppercase font-mono text-[#B600A8] mb-8">
-          <span>01</span>
-          <span className="w-8 h-[1px] bg-[#B600A8]" />
-          <span>ABOUT</span>
+    <motion.span
+      style={{ opacity, color, y }}
+      className="inline-block mr-[0.28em] transition-colors duration-150 select-none"
+    >
+      {children}
+    </motion.span>
+  );
+};
+
+export const About: React.FC = () => {
+  const containerRef = useRef<HTMLElement>(null);
+  const isReducedMotion = !!useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start 0.85', 'end 0.35'],
+  });
+
+  const p1Text =
+    "I'm Sujal, a Computer Science Engineering student and developer who enjoys turning ideas into practical digital experiences. I build web applications, experiment with emerging technologies, and enjoy solving real-world problems through code.";
+
+  const p2Text =
+    "My work spans web development, interactive interfaces, dashboards, and technology-driven projects. I'm constantly learning, building, and looking for better ways to turn concepts into something people can actually use.";
+
+  const p1Words = p1Text.split(' ');
+  const p2Words = p2Text.split(' ');
+  const totalWords = p1Words.length + p2Words.length;
+
+  const headerY = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const headerOpacity = useTransform(scrollYProgress, [0, 0.3, 0.9, 1], [0.3, 0.7, 0.7, 0.2]);
+
+  return (
+    <section
+      ref={containerRef}
+      id="about"
+      className="relative w-full min-h-screen py-24 sm:py-32 md:py-40 px-6 md:px-12 bg-[#0C0C0C] text-[#D7E2EA] overflow-hidden flex flex-col justify-between select-none"
+    >
+      {/* Background ambient glow shapes */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-[#646973]/10 to-[#BBCCD7]/5 rounded-full blur-[140px] pointer-events-none z-0" />
+      <div className="absolute bottom-10 right-10 w-[300px] h-[300px] bg-gradient-to-b from-[#B600A8]/5 to-transparent rounded-full blur-[120px] pointer-events-none z-0" />
+
+      {/* Grid overlay lines */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none z-0 opacity-40" />
+
+      <div className="max-w-[1240px] mx-auto w-full relative z-10 flex flex-col gap-12 sm:gap-16 md:gap-24">
+        {/* Massive Section Title */}
+        <div className="w-full overflow-hidden flex justify-start items-center relative">
+          <motion.h2
+            style={isReducedMotion ? {} : { y: headerY, opacity: headerOpacity }}
+            className="hero-heading uppercase font-black tracking-tight leading-none text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[15vw] opacity-40 select-none whitespace-nowrap -ml-1 sm:-ml-2"
+          >
+            ABOUT ME
+          </motion.h2>
         </div>
-      </FadeIn>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-        <FadeIn delay={0.2} direction="up">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight">
-            Curious mind.<br />
-            <span className="text-[#BBCCD7]">Builder's mindset.</span>
-          </h2>
-        </FadeIn>
+        {/* Scroll-Reveal Main Paragraph Container */}
+        <div className="max-w-[1100px] w-full">
+          {/* Tag & Subheading Indicator */}
+          <FadeIn delay={0.1} direction="up" distance={20} className="mb-6 sm:mb-8 flex items-center gap-3">
+            <span className="text-[11px] sm:text-xs font-mono tracking-widest text-[#BBCCD7]/70 uppercase">
+              01 // BIOGRAPHY & VISION
+            </span>
+            <span className="h-[1px] w-12 bg-gradient-to-r from-[#BBCCD7]/40 to-transparent" />
+          </FadeIn>
 
-        <FadeIn delay={0.3} direction="up" className="space-y-6 text-[#D7E2EA]/80 font-light text-base sm:text-lg leading-relaxed">
-          <p>
-            I'm a Computer Science & Engineering student who enjoys turning ideas into working products. I’m building my foundations in programming, web development, databases and software engineering while exploring new technologies.
+          {/* Paragraph 1 */}
+          <p
+            className="font-normal tracking-tight leading-[1.25] text-left mb-8 sm:mb-10"
+            style={{ fontSize: 'clamp(1.35rem, 3.2vw, 2.75rem)' }}
+          >
+            {p1Words.map((word, i) => {
+              const start = i / totalWords;
+              const end = (i + 1) / totalWords;
+              return (
+                <Word key={`p1-${i}`} progress={scrollYProgress} range={[start, end]} isReducedMotion={isReducedMotion}>
+                  {word}
+                </Word>
+              );
+            })}
           </p>
-          <p className="text-[#D7E2EA]/60 italic border-l-2 border-white/20 pl-4">
-            I believe the fastest way to learn is to build — then break, debug and build better.
+
+          {/* Paragraph 2 */}
+          <p
+            className="font-normal tracking-tight leading-[1.25] text-left"
+            style={{ fontSize: 'clamp(1.2rem, 2.6vw, 2.25rem)' }}
+          >
+            {p2Words.map((word, i) => {
+              const globalIdx = p1Words.length + i;
+              const start = globalIdx / totalWords;
+              const end = (globalIdx + 1) / totalWords;
+              return (
+                <Word key={`p2-${i}`} progress={scrollYProgress} range={[start, end]} isReducedMotion={isReducedMotion}>
+                  {word}
+                </Word>
+              );
+            })}
           </p>
+        </div>
+
+        {/* Lower Portion Personal Details Metadata Grid */}
+        <FadeIn
+          delay={0.3}
+          direction="up"
+          distance={30}
+          className="pt-10 sm:pt-14 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-start"
+        >
+          {/* Detail Item 1 */}
+          <div className="flex flex-col gap-1.5">
+            <span className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D7E2EA]/50 uppercase">
+              ROLE & STATUS
+            </span>
+            <span className="text-sm sm:text-base font-medium tracking-wide text-[#D7E2EA]">
+              CSE STUDENT • DEVELOPER • BUILDER
+            </span>
+          </div>
+
+          {/* Detail Item 2 */}
+          <div className="flex flex-col gap-1.5">
+            <span className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D7E2EA]/50 uppercase">
+              LOCATION
+            </span>
+            <span className="text-sm sm:text-base font-medium tracking-wide text-[#D7E2EA]">
+              BASED IN INDIA
+            </span>
+          </div>
+
+          {/* Detail Item 3 */}
+          <div className="flex flex-col gap-1.5 sm:col-span-2 lg:col-span-1">
+            <span className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D7E2EA]/50 uppercase">
+              FOCUS & EXPLORATION
+            </span>
+            <span className="text-sm sm:text-base font-medium tracking-wide text-[#BBCCD7]">
+              WEB • AI • IOT • SOFTWARE ARCHITECTURE
+            </span>
+          </div>
         </FadeIn>
       </div>
     </section>
   );
 };
+
+export default About;
