@@ -59,7 +59,7 @@ export const Navbar: React.FC = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-[#D7E2EA] p-2 focus:outline-none"
+          className="md:hidden text-[#D7E2EA] p-2 rounded-lg bg-white/5 border border-white/10 focus:outline-none min-w-[44px] min-h-[44px] flex items-center justify-center"
           aria-label="Toggle Navigation Menu"
         >
           <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
@@ -81,7 +81,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="absolute top-full left-0 w-full bg-[#0C0C0C]/95 backdrop-blur-md border-b border-white/10 px-6 py-6 flex flex-col gap-4 md:hidden z-50">
+          <div className="absolute top-full left-0 w-full bg-[#0C0C0C]/98 backdrop-blur-xl border-b border-white/10 px-6 py-6 flex flex-col gap-3 md:hidden z-50 shadow-2xl">
             {navItems.map((item) => (
               <a
                 key={item.label}
@@ -90,7 +90,7 @@ export const Navbar: React.FC = () => {
                   e.preventDefault();
                   handleNavClick(item.href);
                 }}
-                className="text-[#D7E2EA] py-2 text-base font-medium hover:opacity-70 transition-opacity"
+                className="text-[#D7E2EA] py-3 px-4 rounded-lg bg-white/[0.04] border border-white/10 text-base font-medium tracking-wider hover:bg-white/10 transition-all min-h-[44px] flex items-center"
               >
                 {item.label}
               </a>

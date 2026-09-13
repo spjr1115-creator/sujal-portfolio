@@ -35,7 +35,7 @@ export const Contact: React.FC = () => {
             whileInView={isReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-            className="hero-heading uppercase font-black tracking-tight leading-[0.95] text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-left"
+            className="hero-heading uppercase font-black tracking-tight leading-[0.95] text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-left"
           >
             LET'S BUILD<br />
             SOMETHING.

@@ -78,7 +78,7 @@ export const About: React.FC = () => {
         <div className="w-full overflow-hidden flex justify-start items-center relative">
           <motion.h2
             style={isReducedMotion ? {} : { y: headerY, opacity: headerOpacity }}
-            className="hero-heading uppercase font-black tracking-tight leading-none text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[15vw] opacity-40 select-none whitespace-nowrap -ml-1 sm:-ml-2"
+            className="hero-heading uppercase font-black tracking-tight leading-none text-[12.5vw] sm:text-[15vw] md:text-[16vw] lg:text-[15vw] opacity-40 select-none whitespace-nowrap -ml-1 sm:-ml-2"
           >
             ABOUT ME
           </motion.h2>
@@ -96,8 +96,8 @@ export const About: React.FC = () => {
 
           {/* Paragraph 1 */}
           <p
-            className="font-normal tracking-tight leading-[1.25] text-left mb-8 sm:mb-10"
-            style={{ fontSize: 'clamp(1.35rem, 3.2vw, 2.75rem)' }}
+            className="font-normal tracking-tight leading-[1.3] text-left mb-6 sm:mb-10"
+            style={{ fontSize: 'clamp(1.1rem, 2.8vw, 2.75rem)' }}
           >
             {p1Words.map((word, i) => {
               // Compressed word range mapping so reveal completes smoothly within 85% of progress
@@ -114,8 +114,8 @@ export const About: React.FC = () => {
 
           {/* Paragraph 2 */}
           <p
-            className="font-normal tracking-tight leading-[1.25] text-left"
-            style={{ fontSize: 'clamp(1.2rem, 2.6vw, 2.25rem)' }}
+            className="font-normal tracking-tight leading-[1.3] text-left"
+            style={{ fontSize: 'clamp(1.05rem, 2.4vw, 2.25rem)' }}
           >
             {p2Words.map((word, i) => {
               const globalIdx = p1Words.length + i;

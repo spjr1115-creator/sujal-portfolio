@@ -96,7 +96,7 @@ export const ProjectMarquee: React.FC = () => {
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-12 overflow-x-clip select-none"
+      className="relative w-full bg-[#0C0C0C] pt-20 sm:pt-32 md:pt-40 pb-12 overflow-hidden select-none"
       aria-label="Project Visual Marquee"
     >
       {/* Subtle ambient gradient overlay linking Hero to Marquee */}

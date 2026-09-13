@@ -178,7 +178,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, isRedu
               transformStyle: 'preserve-3d',
             }
       }
-      className="sticky top-20 sm:top-24 md:top-28 w-full max-w-[1240px] mx-auto rounded-2xl sm:rounded-3xl border border-white/15 bg-[#0F0F12] overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.9)] backdrop-blur-xl transition-colors duration-300 hover:border-white/30"
+      className="sticky top-16 sm:top-24 md:top-28 w-full max-w-[1240px] mx-auto rounded-xl sm:rounded-3xl border border-white/15 bg-[#0F0F12] overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.9)] backdrop-blur-xl transition-colors duration-300 hover:border-white/30"
     >
       {/* 3D Fold Shadow Ambient Overlay */}
       {!isReducedMotion && (
@@ -188,19 +188,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, isRedu
         />
       )}
 
-      <div className={`relative w-full bg-gradient-to-b ${project.gradientBg} p-6 sm:p-8 md:p-12 flex flex-col justify-between gap-8 md:gap-12 min-h-[70vh] sm:min-h-[75vh] md:min-h-[78vh]`}>
+      <div className={`relative w-full bg-gradient-to-b ${project.gradientBg} p-4 sm:p-8 md:p-12 flex flex-col justify-between gap-6 md:gap-12 min-h-[65vh] sm:min-h-[75vh] md:min-h-[78vh]`}>
         {/* Ambient grid texture inside card */}
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:32px_32px] opacity-10 pointer-events-none" />
 
         {/* Card Header Bar */}
-        <div className="relative z-10 flex justify-between items-center border-b border-white/10 pb-4 sm:pb-6">
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-sm sm:text-base font-bold text-white/50">
+        <div className="relative z-10 flex justify-between items-center border-b border-white/10 pb-3 sm:pb-6">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <span className="font-mono text-xs sm:text-base font-bold text-white/50">
               [0{index + 1} / 0{total}]
             </span>
             <span
               style={{ color: project.accentColor }}
-              className="font-mono text-[10px] sm:text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md flex items-center gap-2"
+              className="font-mono text-[9px] sm:text-xs font-semibold tracking-widest uppercase px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md flex items-center gap-1.5 sm:gap-2"
             >
               {project.icon}
               {project.badge}
@@ -215,28 +215,28 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, isRedu
         </div>
 
         {/* Main Body Grid */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center my-auto">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-12 items-center my-auto">
           {/* Left Column: Text Info & Action Buttons */}
-          <div className="lg:col-span-6 flex flex-col gap-5 sm:gap-6 justify-center">
+          <div className="lg:col-span-6 flex flex-col gap-4 sm:gap-6 justify-center">
             <div>
-              <span className="font-mono text-xs text-[#BBCCD7]/60 tracking-widest uppercase mb-1 block">
+              <span className="font-mono text-[10px] sm:text-xs text-[#BBCCD7]/60 tracking-widest uppercase mb-1 block">
                 {project.category}
               </span>
-              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase leading-tight">
+              <h3 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase leading-tight">
                 {project.title}
               </h3>
             </div>
 
-            <p className="text-sm sm:text-base md:text-lg text-[#D7E2EA]/80 font-light leading-relaxed">
+            <p className="text-xs sm:text-base md:text-lg text-[#D7E2EA]/80 font-light leading-relaxed">
               {project.description}
             </p>
 
             {/* Technology Stack Tags */}
-            <div className="flex flex-wrap gap-2 pt-2">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1 sm:pt-2">
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 text-xs font-mono tracking-wide rounded-full bg-white/5 border border-white/10 text-[#D7E2EA] font-medium"
+                  className="px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-mono tracking-wide rounded-full bg-white/5 border border-white/10 text-[#D7E2EA] font-medium"
                 >
                   {tag}
                 </span>
@@ -244,12 +244,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, isRedu
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-4">
+            <div className="flex flex-wrap items-center gap-3 pt-2 sm:pt-4">
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 border border-white/20 text-xs sm:text-sm font-mono tracking-wider text-white uppercase font-semibold hover:bg-white hover:text-black transition-all duration-300 shadow-md group"
+                className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-white/10 border border-white/20 text-xs sm:text-sm font-mono tracking-wider text-white uppercase font-semibold hover:bg-white hover:text-black transition-all duration-300 shadow-md group min-h-[44px]"
               >
                 <Github className="w-4 h-4" />
                 <span>VIEW ON GITHUB</span>
@@ -262,7 +262,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, isRedu
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ backgroundColor: project.accentColor }}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-mono tracking-wider text-black uppercase font-bold hover:brightness-110 transition-all duration-300 shadow-lg group"
+                  className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-mono tracking-wider text-black uppercase font-bold hover:brightness-110 transition-all duration-300 shadow-lg group min-h-[44px]"
                 >
                   <ExternalLink className="w-4 h-4" />
                   <span>LIVE PROJECT</span>

@@ -17,7 +17,7 @@ export const Hero: React.FC = () => {
       {/* 2. Massive Heading (Dominates the Hero) */}
       <div className="w-full overflow-hidden flex justify-center items-center px-2 relative z-0">
         <FadeIn delay={0.15} direction="up" distance={40} className="w-full text-center">
-          <h1 className="hero-heading uppercase font-black tracking-tight leading-none whitespace-nowrap w-full text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw] mt-6 sm:mt-4 md:-mt-5">
+          <h1 className="hero-heading uppercase font-black tracking-tight leading-none whitespace-nowrap w-full text-[11vw] xs:text-[12.5vw] sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw] mt-6 sm:mt-4 md:-mt-5">
             HI, I'M SUJAL
           </h1>
         </FadeIn>
@@ -32,7 +32,7 @@ export const Hero: React.FC = () => {
         className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 md:top-auto md:translate-y-0 md:bottom-0 z-10 pointer-events-auto flex items-end justify-center"
       >
         <Magnet padding={150} strength={3}>
-          <div className="w-[250px] sm:w-[320px] md:w-[400px] lg:w-[480px] xl:w-[520px] relative flex items-end justify-center">
+          <div className="w-[200px] xs:w-[250px] sm:w-[320px] md:w-[400px] lg:w-[480px] xl:w-[520px] relative flex items-end justify-center">
             <img
               src={portraitImg}
               alt="Sujal Panjiyar — CSE Student, Developer & Builder"
@@ -43,9 +43,9 @@ export const Hero: React.FC = () => {
       </FadeIn>
 
       {/* 4. Bottom Row: Bottom-Left Description & Bottom-Right Contact Button */}
-      <div className="relative z-20 w-full px-6 md:px-10 pb-7 sm:pb-8 md:pb-10 flex flex-col md:flex-row justify-between items-end gap-6">
+      <div className="relative z-20 w-full px-5 sm:px-6 md:px-10 pb-6 sm:pb-8 md:pb-10 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 sm:gap-6">
         {/* Bottom-Left Content */}
-        <FadeIn delay={0.35} direction="up" distance={20} className="flex flex-col gap-2 max-w-[200px] sm:max-w-[260px] md:max-w-[320px]">
+        <FadeIn delay={0.35} direction="up" distance={20} className="flex flex-col gap-1.5 max-w-full sm:max-w-[260px] md:max-w-[320px]">
           <div className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D7E2EA]/60 uppercase">
             CSE STUDENT • DEVELOPER • BUILDER
           </div>
@@ -58,7 +58,7 @@ export const Hero: React.FC = () => {
         </FadeIn>
 
         {/* Bottom-Right Contact Button */}
-        <FadeIn delay={0.5} direction="up" distance={20} className="w-full md:w-auto flex justify-end z-30">
+        <FadeIn delay={0.5} direction="up" distance={20} className="w-full sm:w-auto flex justify-start sm:justify-end z-30">
           <Magnet padding={150} strength={3}>
             <ContactButton />
           </Magnet>
