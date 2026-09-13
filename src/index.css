@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  background: #0C0C0C;
+  color: #D7E2EA;
+  font-family: 'Kanit', sans-serif;
+  min-height: 100vh;
+}
+
+.app-wrapper {
+  overflow-x: clip;
+  background: #0C0C0C;
+  min-height: 100vh;
+  position: relative;
+}
+
+.hero-heading {
+  background: linear-gradient(
+    180deg,
+    #646973 0%,
+    #BBCCD7 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass & Glow effects for existing section styling */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
