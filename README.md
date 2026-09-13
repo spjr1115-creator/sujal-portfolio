@@ -1,131 +1,50 @@
-# ✦ Sujal Panjiyar — Developer Portfolio
+# Sujal Panjiyar — Portfolio
 
-> Computer Science & Engineering student building, learning, and evolving one project at a time.
+Computer Science & Engineering student building practical web experiences and technology-driven projects.
 
-🌐 **Live Portfolio:** https://spjr1115-creator.github.io/sujal-portfolio/
+## Overview
 
----
+This repository contains the source code for Sujal Panjiyar's personal developer portfolio, featuring modern editorial layout, dynamic 3D card fold project showcase, responsive typography, and facts-based project presentations.
 
-## 👨‍💻 About Me
+## Live Site
 
-I'm **Sujal Panjiyar**, a Computer Science & Engineering student at **Sona College of Technology, Salem, Tamil Nadu**.
+- **Live URL**: [https://spjr1115-creator.github.io/sujal-portfolio/](https://spjr1115-creator.github.io/sujal-portfolio/)
 
-I'm interested in software development, web technologies, problem solving, and building practical projects that turn ideas into working products.
+## Core Technologies
 
-Currently learning, experimenting, and continuously improving my development skills.
+- **Frontend**: React 18, TypeScript, Vite
+- **Styling**: Tailwind CSS, PostCSS
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Deployment**: GitHub Pages (via GitHub Actions)
 
----
+## Featured Showcase Projects
 
-## 🚀 Featured Projects
+1. **Zayathon**: Hackathon platform ([https://zayathon-xi.vercel.app/](https://zayathon-xi.vercel.app/))
+2. **NEER**: IoT safety system ([https://github.com/spjr1115-creator/NeerBand](https://github.com/spjr1115-creator/NeerBand))
+3. **EcoQuest**: Gamified sustainability app ([https://ecoquest-neer4.vercel.app/](https://ecoquest-neer4.vercel.app/))
+4. **Expense Tracker**: Personal finance dashboard ([https://spjr1115-creator.github.io/expense-tracker/](https://spjr1115-creator.github.io/expense-tracker/))
 
-### 💰 Expense Tracker
+## Local Development Setup
 
-A modern personal expense management web application designed to help users track income, expenses, savings, and spending patterns.
+```bash
+# Clone repository
+git clone https://github.com/spjr1115-creator/sujal-portfolio.git
+cd sujal-portfolio
 
-**Highlights**
-- Income & expense tracking
-- Category-based expense management
-- Monthly analytics
-- Spending insights
-- Budget tracking
-- Responsive UI
-- Firebase authentication & database
-- Dark glassmorphism-inspired interface
+# Install dependencies
+npm install
 
-**Tech Stack**
+# Start local dev server
+npm run dev
 
-`HTML` `CSS` `JavaScript` `Firebase` `Firestore`
+# Production build
+npm run build
+```
 
----
+## Author
 
-### 💧 NEER — Safety Wearable
-
-A safety-focused project designed around a wearable emergency system for women and children.
-
-**Highlights**
-- SOS emergency trigger
-- Location tracking
-- Firebase-based data handling
-- Safety-focused wearable concept
-- Child safety locket concept
-
-**Tech Stack**
-
-`ESP32` `GPS` `Firebase` `HTML` `JavaScript`
-
----
-
-## 🛠️ Skills
-
-### Languages
-- C
-- Java
-- JavaScript
-- HTML
-- CSS
-
-### Technologies
-- Firebase
-- Firestore
-- Git
-- GitHub
-
-### Currently Exploring
-- Web Development
-- Data Structures & Algorithms
-- Object-Oriented Programming
-- Software Development
-- Modern UI/UX
-
----
-
-## 🎨 Portfolio Features
-
-- Modern dark interface
-- Glassmorphism UI
-- Responsive design
-- Smooth scrolling
-- Interactive navigation
-- Animated elements
-- Project showcase
-- Skills section
-- Contact section
-- Mobile-friendly layout
-
----
-
-## 📚 Education
-
-**B.E. Computer Science and Engineering**
-
-**Sona College of Technology**  
-Salem, Tamil Nadu
-
----
-
-## 📫 Connect With Me
-
-- **GitHub:** https://github.com/spjr1115-creator
-- **LinkedIn:** https://www.linkedin.com/in/sujal-panjiyar-67b9bb393/
-- **Email:** spjr1115@gmail.com
-
----
-
-## 🌱 Currently
-
-> Learning. Building. Breaking things. Fixing them.  
-> **Developing and evolving. ;)**
-
----
-
-## ⭐ About This Repository
-
-This repository contains the source code for my personal developer portfolio.
-
-Built from scratch with a focus on clean design, responsive layouts, interactive elements, and showcasing my projects and learning journey.
-
----
-
-### © 2026 Sujal Panjiyar
-
-Made with curiosity, code, and a lot of debugging.
+**Sujal Panjiyar**
+- Portfolio: [https://spjr1115-creator.github.io/sujal-portfolio/](https://spjr1115-creator.github.io/sujal-portfolio/)
+- LinkedIn: [https://www.linkedin.com/in/sujal-panjiyar-67b9bb393/](https://www.linkedin.com/in/sujal-panjiyar-67b9bb393/)
+- Instagram: [https://www.instagram.com/iamspjr15/](https://www.instagram.com/iamspjr15/)
