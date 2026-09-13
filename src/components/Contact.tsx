@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { FadeIn } from './FadeIn';
 import { Magnet } from './Magnet';
-import { Mail, Github, Instagram, Linkedin, ArrowUpRight } from 'lucide-react';
+import { Mail, Github, Instagram, Linkedin, ArrowUpRight, FileText } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   const isReducedMotion = !!useReducedMotion();
@@ -52,13 +52,13 @@ export const Contact: React.FC = () => {
             Have an idea, project, or problem worth solving? Let's turn it into something real.
           </motion.p>
 
-          {/* Magnetic Main Action Button */}
+          {/* Action Buttons: Primary GET IN TOUCH & Secondary DOWNLOAD RESUME */}
           <motion.div
             initial={isReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 }}
             whileInView={isReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.7, delay: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
-            className="pt-4"
+            className="pt-4 flex flex-wrap items-center gap-4 sm:gap-6"
           >
             <Magnet padding={100} strength={2.5}>
               <a
@@ -67,12 +67,27 @@ export const Contact: React.FC = () => {
                   background: 'linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)',
                   boxShadow: '0px 4px 15px rgba(181, 1, 167, 0.3), 4px 4px 12px #7721B1 inset',
                 }}
-                className="inline-flex items-center gap-3 px-8 py-4 sm:px-12 sm:py-5 rounded-full text-sm sm:text-base md:text-lg font-mono font-bold tracking-widest uppercase text-white hover:scale-105 border-2 border-white/80 transition-all duration-300 shadow-2xl group"
+                className="inline-flex items-center gap-3 px-8 py-4 sm:px-10 sm:py-4.5 rounded-full text-sm sm:text-base md:text-lg font-mono font-bold tracking-widest uppercase text-white hover:scale-105 border-2 border-white/80 transition-all duration-300 shadow-2xl group"
                 aria-label="Get in touch via email"
               >
                 <Mail className="w-5 h-5" />
                 <span>GET IN TOUCH</span>
                 <span className="group-hover:translate-x-1.5 transition-transform duration-200">→</span>
+              </a>
+            </Magnet>
+
+            <Magnet padding={100} strength={2.5}>
+              <a
+                href={`${import.meta.env.BASE_URL}Resume.pdf`}
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Sujal_Panjiyar_Resume.pdf"
+                className="inline-flex items-center gap-3 px-6 py-3.5 sm:px-8 sm:py-4 rounded-full text-sm sm:text-base font-mono font-semibold tracking-wider uppercase text-[#D7E2EA] bg-white/5 hover:bg-white/10 hover:text-white border border-white/20 hover:border-white/40 transition-all duration-300 shadow-lg group"
+                aria-label="Download Sujal Panjiyar Resume PDF"
+              >
+                <FileText className="w-4.5 h-4.5 text-[#BBCCD7]" />
+                <span>DOWNLOAD RESUME</span>
+                <span className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200">↗</span>
               </a>
             </Magnet>
           </motion.div>

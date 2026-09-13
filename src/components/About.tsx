@@ -131,39 +131,55 @@ export const About: React.FC = () => {
           </p>
         </div>
 
-        {/* Lower Portion Personal Details Metadata Grid */}
+        {/* Lower Portion Personal Details & Verified Resume Metadata Grid */}
         <FadeIn
           delay={0.3}
           direction="up"
           distance={30}
-          className="pt-10 sm:pt-14 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-start"
+          className="pt-10 sm:pt-14 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start"
         >
-          {/* Detail Item 1 */}
+          {/* Detail Item 1: Role */}
           <div className="flex flex-col gap-1.5">
             <span className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D7E2EA]/50 uppercase">
               ROLE & STATUS
             </span>
-            <span className="text-sm sm:text-base font-medium tracking-wide text-[#D7E2EA]">
+            <span className="text-xs sm:text-sm font-medium tracking-wide text-[#D7E2EA]">
               CSE STUDENT • DEVELOPER • BUILDER
             </span>
           </div>
 
-          {/* Detail Item 2 */}
+          {/* Detail Item 2: Education */}
           <div className="flex flex-col gap-1.5">
             <span className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D7E2EA]/50 uppercase">
-              LOCATION
+              EDUCATION & ACADEMICS
             </span>
-            <span className="text-sm sm:text-base font-medium tracking-wide text-[#D7E2EA]">
-              BASED IN INDIA
+            <span className="text-xs sm:text-sm font-medium tracking-wide text-[#D7E2EA]">
+              B.E. CSE • SONA COLLEGE OF TECH
+            </span>
+            <span className="text-[11px] font-mono text-[#BBCCD7]">
+              2025–2029 • CGPA: 8.75 / 10
             </span>
           </div>
 
-          {/* Detail Item 3 — CURRENTLY Micro-Content */}
-          <div className="flex flex-col gap-1.5 sm:col-span-2 lg:col-span-1">
+          {/* Detail Item 3: Certification */}
+          <div className="flex flex-col gap-1.5">
+            <span className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D7E2EA]/50 uppercase">
+              CERTIFICATION
+            </span>
+            <span className="text-xs sm:text-sm font-medium tracking-wide text-[#D7E2EA]">
+              NPTEL — EFFECTIVE WRITING
+            </span>
+            <span className="text-[11px] font-mono text-[#BBCCD7]">
+              ELITE CATEGORY
+            </span>
+          </div>
+
+          {/* Detail Item 4: CURRENTLY Micro-Content */}
+          <div className="flex flex-col gap-1.5">
             <span className="text-[10px] sm:text-xs font-mono tracking-widest text-[#BBCCD7] uppercase font-semibold">
               CURRENTLY
             </span>
-            <div className="text-xs sm:text-sm font-mono tracking-wide text-[#D7E2EA]/90 flex flex-col gap-1">
+            <div className="text-[11px] sm:text-xs font-mono tracking-wide text-[#D7E2EA]/90 flex flex-col gap-1">
               <span>• Building web applications</span>
               <span>• Exploring AI & IoT</span>
               <span>• Learning by shipping projects</span>

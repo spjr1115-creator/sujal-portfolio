@@ -57,7 +57,7 @@ const servicesData: ServiceItem[] = [
 const skillCategories = [
   {
     category: 'BUILDING WITH',
-    skills: ['React', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS', 'Firebase'],
+    skills: ['React', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS', 'Firebase'],
   },
   {
     category: 'WORKING WITH',
@@ -65,7 +65,7 @@ const skillCategories = [
   },
   {
     category: 'EXPLORING',
-    skills: ['AI', 'IoT', 'Framer Motion'],
+    skills: ['AI', 'IoT', 'TypeScript', 'Framer Motion'],
   },
 ];
 
