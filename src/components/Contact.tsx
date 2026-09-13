@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { FadeIn } from './FadeIn';
 import { Magnet } from './Magnet';
-import { Mail, Github, ArrowUpRight } from 'lucide-react';
+import { Mail, Github, Instagram, Linkedin, ArrowUpRight } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   const isReducedMotion = !!useReducedMotion();
@@ -84,31 +84,61 @@ export const Contact: React.FC = () => {
           whileInView={isReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="pt-10 border-t border-white/10 flex flex-wrap items-center justify-between gap-6"
+          className="pt-10 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
         >
-          <div className="flex flex-wrap items-center gap-6 sm:gap-8">
+          <div className="flex flex-wrap items-center gap-5 sm:gap-8">
+            {/* Email Link */}
             <a
               href="mailto:spjr1115@gmail.com"
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono text-[#D7E2EA]/80 hover:text-white uppercase tracking-wider transition-colors duration-200"
+              className="group inline-flex items-center gap-2 text-xs sm:text-sm font-mono text-[#D7E2EA]/80 hover:text-white uppercase tracking-wider transition-colors duration-200"
+              aria-label="Send email to spjr1115@gmail.com"
             >
               <Mail className="w-4 h-4 text-[#B600A8]" />
-              <span>spjr1115@gmail.com</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-[#D7E2EA]/40" />
+              <span>EMAIL</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#D7E2EA]/40 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
             </a>
 
+            {/* GitHub Profile Link */}
             <a
               href="https://github.com/spjr1115-creator"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono text-[#D7E2EA]/80 hover:text-white uppercase tracking-wider transition-colors duration-200"
+              className="group inline-flex items-center gap-2 text-xs sm:text-sm font-mono text-[#D7E2EA]/80 hover:text-white uppercase tracking-wider transition-colors duration-200"
+              aria-label="Open Sujal Panjiyar GitHub Profile"
             >
               <Github className="w-4 h-4 text-[#BBCCD7]" />
               <span>GITHUB</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-[#D7E2EA]/40" />
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#D7E2EA]/40 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+            </a>
+
+            {/* Instagram Profile Link */}
+            <a
+              href="https://www.instagram.com/iamspjr15/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 text-xs sm:text-sm font-mono text-[#D7E2EA]/80 hover:text-white uppercase tracking-wider transition-colors duration-200"
+              aria-label="Open Sujal Panjiyar Instagram Profile"
+            >
+              <Instagram className="w-4 h-4 text-[#E1306C]" />
+              <span>INSTAGRAM</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#D7E2EA]/40 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+            </a>
+
+            {/* LinkedIn Profile Link */}
+            <a
+              href="https://www.linkedin.com/in/sujal-panjiyar-67b9bb393/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 text-xs sm:text-sm font-mono text-[#D7E2EA]/80 hover:text-white uppercase tracking-wider transition-colors duration-200"
+              aria-label="Open Sujal Panjiyar LinkedIn Profile"
+            >
+              <Linkedin className="w-4 h-4 text-[#0A66C2]" />
+              <span>LINKEDIN</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#D7E2EA]/40 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
             </a>
           </div>
 
-          <div className="text-xs font-mono text-[#D7E2EA]/40 uppercase tracking-widest">
+          <div className="text-xs font-mono text-[#D7E2EA]/40 uppercase tracking-widest pt-2 md:pt-0">
             CSE STUDENT • DEVELOPER • BUILDER
           </div>
         </motion.div>
