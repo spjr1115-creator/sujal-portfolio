@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { FadeIn } from './FadeIn';
-import { ExternalLink, Github, Layers, ShieldAlert, Leaf, Wallet, LayoutDashboard } from 'lucide-react';
+import { ExternalLink, Github, Layers, ShieldAlert, Leaf, Wallet } from 'lucide-react';
 
 export interface ProjectData {
   id: string;
@@ -22,13 +22,14 @@ const projects: ProjectData[] = [
   {
     id: 'zayathon',
     number: '01',
-    title: 'Zayathon',
+    title: 'ZAYATHON',
     category: 'Hackathon & Builder Platform',
     badge: 'HACKATHON PLATFORM',
     description:
-      'A hackathon and team-building platform designed to help participants discover hackathons, form project teams, submit entries, and collaborate with fellow builders.',
+      'A hackathon discovery and team-building platform designed to help builders form teams, submit project entries, and track hackathon milestones.',
     tags: ['React', 'Firebase', 'Tailwind CSS', 'Firestore'],
     githubUrl: 'https://github.com/spjr1115-creator/Zayathon',
+    liveUrl: 'https://zayathon-xi.vercel.app/',
     accentColor: '#B600A8',
     gradientBg: 'from-[#1E022A] via-[#390A50] to-[#0C0C0C]',
     icon: <Layers className="w-5 h-5 text-[#B600A8]" />,
@@ -36,13 +37,14 @@ const projects: ProjectData[] = [
   {
     id: 'ecoquest',
     number: '02',
-    title: 'EcoQuest',
+    title: 'ECOQUEST',
     category: 'Gamified Environmental Tracker',
     badge: 'SUSTAINABILITY',
     description:
       'An interactive environmental action platform that gamifies daily sustainability habits, tracks eco-friendly activities, and encourages environmental consciousness.',
     tags: ['JavaScript', 'HTML5', 'CSS3', 'Local Storage'],
     githubUrl: 'https://github.com/spjr1115-creator/EcoQuest',
+    liveUrl: 'https://ecoquest-neer4.vercel.app/',
     accentColor: '#62e59a',
     gradientBg: 'from-[#052C1C] via-[#0F4E30] to-[#0C0C0C]',
     icon: <Leaf className="w-5 h-5 text-[#62e59a]" />,
@@ -50,11 +52,11 @@ const projects: ProjectData[] = [
   {
     id: 'neer',
     number: '03',
-    title: 'NEER Safety Band',
-    category: 'IoT Safety & SOS System',
+    title: 'NEER / NEERBAND',
+    category: 'IoT Safety & Emergency SOS System',
     badge: 'HARDWARE & IOT',
     description:
-      'An IoT safety-focused wearable concept combining emergency SOS triggering, location tracking logging, and Firebase-backed alert notifications.',
+      'An IoT safety system concept combining emergency SOS triggering, GPS location capture, timestamped emergency logging, and real-time Firebase alert monitoring.',
     tags: ['ESP32', 'GPS Location', 'Firebase', 'JavaScript', 'Webhooks'],
     githubUrl: 'https://github.com/spjr1115-creator/NEER',
     accentColor: '#78aaff',
@@ -64,7 +66,7 @@ const projects: ProjectData[] = [
   {
     id: 'expense-tracker',
     number: '04',
-    title: 'Expense Tracker',
+    title: 'EXPENSE TRACKER',
     category: 'Personal Finance Dashboard',
     badge: 'FINANCE APP',
     description:
@@ -76,25 +78,16 @@ const projects: ProjectData[] = [
     gradientBg: 'from-[#25133B] via-[#461D69] to-[#0C0C0C]',
     icon: <Wallet className="w-5 h-5 text-[#8d7bff]" />,
   },
-  {
-    id: 'main-dashboard',
-    number: '05',
-    title: 'Main Dashboard',
-    category: 'Project Management Dashboard',
-    badge: 'WEB APP',
-    description:
-      'A centralized web application dashboard for managing developer projects, tracking repository progress, and organizing software development workflows.',
-    tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
-    githubUrl: 'https://github.com/spjr1115-creator/sujal-portfolio',
-    accentColor: '#BBCCD7',
-    gradientBg: 'from-[#15233C] via-[#23365B] to-[#0C0C0C]',
-    icon: <LayoutDashboard className="w-5 h-5 text-[#BBCCD7]" />,
-  },
 ];
 
 export const Projects: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isReducedMotion = !!useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start'],
+  });
 
   return (
     <section
@@ -102,14 +95,14 @@ export const Projects: React.FC = () => {
       ref={containerRef}
       className="relative w-full py-24 sm:py-32 md:py-40 px-4 sm:px-6 md:px-12 bg-[#0C0C0C] text-[#D7E2EA] overflow-hidden select-none"
     >
-      {/* Background ambient gradient lighting */}
+      {/* Background ambient lighting */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-r from-[#B600A8]/10 via-[#78aaff]/10 to-transparent blur-[160px] pointer-events-none z-0" />
 
-      {/* Grid background overlay */}
+      {/* Grid overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none z-0 opacity-40" />
 
       <div className="max-w-[1280px] mx-auto w-full relative z-10 flex flex-col gap-12 sm:gap-20">
-        {/* Section Intro Header */}
+        {/* Section Header */}
         <div className="flex flex-col gap-4 max-w-[900px] px-2 sm:px-0">
           <FadeIn delay={0.1} direction="up" distance={20} className="flex items-center gap-3">
             <span className="text-[11px] sm:text-xs font-mono tracking-widest text-[#BBCCD7]/70 uppercase">
@@ -131,8 +124,8 @@ export const Projects: React.FC = () => {
           </FadeIn>
         </div>
 
-        {/* Stacked Project Cards Container */}
-        <div className="relative w-full flex flex-col gap-10 sm:gap-16 md:gap-24">
+        {/* Stacked Project Cards List */}
+        <div className="relative w-full flex flex-col gap-12 sm:gap-20 md:gap-28">
           {projects.map((project, index) => (
             <ProjectCard
               key={project.id}
@@ -158,29 +151,35 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, isReducedMotion }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
+  // Track card progress through viewport for entry, sticky overlap, exit scale & parallax
   const { scrollYProgress } = useScroll({
     target: cardRef,
-    offset: ['start end', 'start start'],
+    offset: ['start end', 'end start'],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.6, 0.95, 1]);
+  // Smooth scale down as card moves into sticky background stack (1.0 -> 0.94)
+  const scale = useTransform(scrollYProgress, [0.1, 0.4, 0.8, 1], [0.94, 1, 1, 0.93]);
+  const opacity = useTransform(scrollYProgress, [0.1, 0.35, 0.8, 1], [0.6, 1, 1, 0.85]);
+  const y = useTransform(scrollYProgress, [0.1, 0.4, 0.8, 1], [30, 0, 0, -20]);
+
+  // Subtle image parallax effect
+  const imageY = useTransform(scrollYProgress, [0, 1], ['0px', '-35px']);
 
   return (
     <motion.div
       ref={cardRef}
-      style={isReducedMotion ? {} : { scale, opacity }}
-      className="sticky top-20 sm:top-24 md:top-28 w-full max-w-[1240px] mx-auto rounded-2xl sm:rounded-3xl border border-white/15 bg-[#0F0F12] overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-colors duration-300 hover:border-white/30"
+      style={isReducedMotion ? {} : { scale, opacity, y }}
+      className="sticky top-20 sm:top-24 md:top-28 w-full max-w-[1240px] mx-auto rounded-2xl sm:rounded-3xl border border-white/15 bg-[#0F0F12] overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.85)] backdrop-blur-xl transition-colors duration-300 hover:border-white/30"
     >
-      <div className={`relative w-full bg-gradient-to-b ${project.gradientBg} p-6 sm:p-8 md:p-12 flex flex-col justify-between gap-8 md:gap-12 min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh]`}>
-        {/* Subtle grid pattern inside card */}
+      <div className={`relative w-full bg-gradient-to-b ${project.gradientBg} p-6 sm:p-8 md:p-12 flex flex-col justify-between gap-8 md:gap-12 min-h-[70vh] sm:min-h-[75vh] md:min-h-[78vh]`}>
+        {/* Ambient grid texture inside card */}
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:32px_32px] opacity-10 pointer-events-none" />
 
-        {/* Card Header Row */}
+        {/* Card Header Bar */}
         <div className="relative z-10 flex justify-between items-center border-b border-white/10 pb-4 sm:pb-6">
           <div className="flex items-center gap-3">
             <span className="font-mono text-sm sm:text-base font-bold text-white/50">
-              [{project.number} / 0{total}]
+              [0{index + 1} / 0{total}]
             </span>
             <span
               style={{ color: project.accentColor }}
@@ -198,9 +197,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, isRedu
           </div>
         </div>
 
-        {/* Card Main Body Grid (Text Info Left, Visual Preview Right) */}
+        {/* Main Body Grid */}
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center my-auto">
-          {/* Left Column: Text Information */}
+          {/* Left Column: Text Info & Action Buttons */}
           <div className="lg:col-span-6 flex flex-col gap-5 sm:gap-6 justify-center">
             <div>
               <span className="font-mono text-xs text-[#BBCCD7]/60 tracking-widest uppercase mb-1 block">
@@ -215,7 +214,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, isRedu
               {project.description}
             </p>
 
-            {/* Technology Tags */}
+            {/* Technology Stack Tags */}
             <div className="flex flex-wrap gap-2 pt-2">
               {project.tags.map((tag) => (
                 <span
@@ -227,7 +226,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, isRedu
               ))}
             </div>
 
-            {/* Action Links */}
+            {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <a
                 href={project.githubUrl}
@@ -237,7 +236,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, isRedu
               >
                 <Github className="w-4 h-4" />
                 <span>VIEW ON GITHUB</span>
-                <span className="group-hover:translate-x-1 transition-transform">↗</span>
+                <span className="group-hover:translate-x-1 transition-transform duration-200">↗</span>
               </a>
 
               {project.liveUrl && (
@@ -250,23 +249,26 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, total, isRedu
                 >
                   <ExternalLink className="w-4 h-4" />
                   <span>LIVE PROJECT</span>
-                  <span className="group-hover:translate-x-1 transition-transform">↗</span>
+                  <span className="group-hover:translate-x-1 transition-transform duration-200">↗</span>
                 </a>
               )}
             </div>
           </div>
 
-          {/* Right Column: Bespoke UI Frame Mockup Preview */}
-          <div className="lg:col-span-6 w-full">
+          {/* Right Column: UI Mockup Preview Frame with Image Parallax */}
+          <motion.div
+            style={isReducedMotion ? {} : { y: imageY }}
+            className="lg:col-span-6 w-full"
+          >
             <ProjectUIMockup project={project} />
-          </div>
+          </motion.div>
         </div>
       </div>
     </motion.div>
   );
 };
 
-/* Bespoke UI Window Frame Preview Representation */
+/* Bespoke UI Window Mockup Frame */
 const ProjectUIMockup: React.FC<{ project: ProjectData }> = ({ project }) => {
   return (
     <div className="w-full aspect-[16/10] bg-[#09090C] rounded-xl sm:rounded-2xl border border-white/15 overflow-hidden shadow-2xl flex flex-col group relative">
@@ -278,17 +280,17 @@ const ProjectUIMockup: React.FC<{ project: ProjectData }> = ({ project }) => {
           <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500/80" />
         </div>
         <div className="bg-black/50 px-3 py-1 rounded-md text-[10px] sm:text-xs font-mono text-[#D7E2EA]/50 truncate max-w-[180px] sm:max-w-[260px] text-center border border-white/5">
-          {project.title.toLowerCase().replace(/\s+/g, '')}.app
+          {project.id}.app
         </div>
         <div className="w-4" />
       </div>
 
-      {/* Mockup Window Body Content Preview */}
+      {/* Mockup Window Workspace Content */}
       <div className="relative flex-1 p-4 sm:p-6 flex flex-col justify-between overflow-hidden bg-gradient-to-br from-[#0D0D12] to-[#14141E]">
-        {/* Subtle grid background */}
+        {/* Background grid */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:1.5rem_1.5rem]" />
 
-        {/* Top Wireframe Bar */}
+        {/* Top Wireframe Navigation Bar */}
         <div className="relative z-10 flex justify-between items-center border-b border-white/10 pb-3">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full" style={{ backgroundColor: project.accentColor }} />
@@ -301,7 +303,7 @@ const ProjectUIMockup: React.FC<{ project: ProjectData }> = ({ project }) => {
           </span>
         </div>
 
-        {/* Center UI Layout Simulation */}
+        {/* Center Simulated Interface */}
         <div className="relative z-10 my-auto grid grid-cols-3 gap-3">
           <div className="col-span-2 bg-white/[0.03] border border-white/10 rounded-lg p-3 space-y-2 group-hover:border-white/20 transition-colors">
             <div className="flex justify-between items-center">
@@ -317,7 +319,7 @@ const ProjectUIMockup: React.FC<{ project: ProjectData }> = ({ project }) => {
           </div>
 
           <div className="col-span-1 bg-white/[0.03] border border-white/10 rounded-lg p-3 flex flex-col justify-between group-hover:border-white/20 transition-colors">
-            <span className="text-[10px] font-mono text-white/60 uppercase">LOGS</span>
+            <span className="text-[10px] font-mono text-white/60 uppercase">METRICS</span>
             <div className="space-y-1">
               <div className="h-1.5 w-full bg-white/20 rounded" />
               <div className="h-1.5 w-2/3 bg-white/10 rounded" />
@@ -326,9 +328,9 @@ const ProjectUIMockup: React.FC<{ project: ProjectData }> = ({ project }) => {
           </div>
         </div>
 
-        {/* Bottom Feature Tags Pill Bar */}
+        {/* Bottom Status Bar */}
         <div className="relative z-10 pt-3 border-t border-white/10 flex justify-between items-center text-[10px] font-mono text-[#D7E2EA]/60">
-          <span>GITHUB REPOSITORY VERIFIED</span>
+          <span>VERIFIED REPOSITORY</span>
           <span className="group-hover:translate-x-1 transition-transform" style={{ color: project.accentColor }}>
             EXPLORE DETAILS ↗
           </span>
