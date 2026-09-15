@@ -13,71 +13,37 @@ export interface ProjectVisual {
 
 const projectVisuals: ProjectVisual[] = [
   {
-    id: 'zayathon',
-    title: 'Zayathon',
-    category: 'Hackathon & Builder Platform',
-    badge: 'HACKATHON',
-    gradient: 'from-[#1E022A] via-[#390A50] to-[#0C0C0C]',
-    accentColor: '#B600A8',
-    techStack: ['React', 'Firebase', 'Tailwind'],
-  },
-  {
-    id: 'ecoquest',
-    title: 'EcoQuest',
-    category: 'Gamified Environmental Tracker',
-    badge: 'SUSTAINABILITY',
-    gradient: 'from-[#052C1C] via-[#0F4E30] to-[#0C0C0C]',
-    accentColor: '#62e59a',
-    techStack: ['JavaScript', 'HTML5', 'CSS3'],
-  },
-  {
-    id: 'neer',
-    title: 'NEER Safety Band',
-    category: 'IoT Safety & SOS System',
-    badge: 'HARDWARE & IOT',
-    gradient: 'from-[#0B1F42] via-[#17386D] to-[#0C0C0C]',
-    accentColor: '#78aaff',
-    techStack: ['ESP32', 'GPS', 'Firebase'],
-  },
-  {
     id: 'expense',
     title: 'Expense Tracker',
-    category: 'Personal Finance & Expense Management',
+    category: 'Personal Finance & Expense Analytics',
     badge: 'FINANCE APP',
     gradient: 'from-[#25133B] via-[#461D69] to-[#0C0C0C]',
     accentColor: '#8d7bff',
-    techStack: ['JavaScript', 'Firestore', 'Chart.js'],
+    techStack: ['Firebase Auth', 'Firestore', 'GitHub Pages'],
   },
   {
-    id: 'dashboard',
-    title: 'Main Dashboard',
-    category: 'Project Management Dashboard',
-    badge: 'WEB APP',
-    gradient: 'from-[#15233C] via-[#23365B] to-[#0C0C0C]',
-    accentColor: '#BBCCD7',
-    techStack: ['React', 'TypeScript', 'Vite'],
+    id: 'neer',
+    title: 'Neer Band',
+    category: 'Women Safety Smart Watch & SOS',
+    badge: 'IOT & SAFETY',
+    gradient: 'from-[#0B1F42] via-[#17386D] to-[#0C0C0C]',
+    accentColor: '#78aaff',
+    techStack: ['HTML', 'Java', 'Firebase'],
+  },
+  {
+    id: 'zayathon',
+    title: 'Zayathon Redesign',
+    category: 'Cinematic Hackathon Platform',
+    badge: 'HACKATHON',
+    gradient: 'from-[#1E022A] via-[#390A50] to-[#0C0C0C]',
+    accentColor: '#B600A8',
+    techStack: ['Astro', 'TypeScript', 'Supabase'],
   },
 ];
 
-// Row 1 & Row 2 visual sequences duplicated 3 times for a seamless, gapless infinite loop
-const row1Items = [...projectVisuals, ...projectVisuals, ...projectVisuals];
-const row2Items = [
-  projectVisuals[1],
-  projectVisuals[3],
-  projectVisuals[0],
-  projectVisuals[4],
-  projectVisuals[2],
-  projectVisuals[1],
-  projectVisuals[3],
-  projectVisuals[0],
-  projectVisuals[4],
-  projectVisuals[2],
-  projectVisuals[1],
-  projectVisuals[3],
-  projectVisuals[0],
-  projectVisuals[4],
-  projectVisuals[2],
-];
+// Row 1 & Row 2 visual sequences duplicated for a seamless infinite loop
+const row1Items = [...projectVisuals, ...projectVisuals, ...projectVisuals, ...projectVisuals];
+const row2Items = [...projectVisuals].reverse().concat([...projectVisuals].reverse(), [...projectVisuals].reverse(), [...projectVisuals].reverse());
 
 export const ProjectMarquee: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);

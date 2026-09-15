@@ -56,16 +56,16 @@ const servicesData: ServiceItem[] = [
 
 const skillCategories = [
   {
-    category: 'BUILDING WITH',
-    skills: ['React', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS', 'Firebase'],
+    category: 'TECHNICAL SKILLS',
+    skills: ['C Programming', 'Python', 'Java', 'HTML', 'Firebase', 'Problem Solving', 'MS Office'],
   },
   {
-    category: 'WORKING WITH',
-    skills: ['Java', 'Python', 'C', 'C++', 'Git', 'GitHub'],
+    category: 'WEB & PLATFORMS',
+    skills: ['Astro', 'TypeScript', 'JavaScript', 'Supabase', 'PostgreSQL', 'Cloud Firestore', 'Vercel', 'GitHub Pages'],
   },
   {
-    category: 'EXPLORING',
-    skills: ['AI', 'IoT', 'TypeScript', 'Framer Motion'],
+    category: 'PERSONAL STRENGTHS',
+    skills: ['Quick Learner', 'Team Player', 'Adaptability', 'Communication Skills', 'Time Management'],
   },
 ];
 

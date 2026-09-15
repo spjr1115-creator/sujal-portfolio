@@ -138,13 +138,16 @@ export const About: React.FC = () => {
           distance={30}
           className="pt-10 sm:pt-14 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start"
         >
-          {/* Detail Item 1: Role */}
+          {/* Detail Item 1: Role & Status */}
           <div className="flex flex-col gap-1.5">
             <span className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D7E2EA]/50 uppercase">
-              ROLE & STATUS
+              ROLE & OBJECTIVE
             </span>
             <span className="text-xs sm:text-sm font-medium tracking-wide text-[#D7E2EA]">
-              CSE STUDENT • DEVELOPER • BUILDER
+              CSE STUDENT • DEVELOPER • PROBLEM SOLVER
+            </span>
+            <span className="text-[11px] font-mono text-[#BBCCD7]">
+              Salem, Tamil Nadu • Nepali
             </span>
           </div>
 
@@ -159,30 +162,39 @@ export const About: React.FC = () => {
             <span className="text-[11px] font-mono text-[#BBCCD7]">
               2025–2029 • CGPA: 8.75 / 10
             </span>
-          </div>
-
-          {/* Detail Item 3: Certification */}
-          <div className="flex flex-col gap-1.5">
-            <span className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D7E2EA]/50 uppercase">
-              CERTIFICATION
-            </span>
-            <span className="text-xs sm:text-sm font-medium tracking-wide text-[#D7E2EA]">
-              NPTEL — EFFECTIVE WRITING
+            <span className="text-xs sm:text-sm font-medium tracking-wide text-[#D7E2EA] pt-1">
+              +2 SCIENCE (COMPUTER) • TRITON COLLEGE
             </span>
             <span className="text-[11px] font-mono text-[#BBCCD7]">
-              ELITE CATEGORY
+              2023–2024 • GPA: 3.36 / 4
             </span>
           </div>
 
-          {/* Detail Item 4: CURRENTLY Micro-Content */}
+          {/* Detail Item 3: Certification & Achievements */}
+          <div className="flex flex-col gap-1.5">
+            <span className="text-[10px] sm:text-xs font-mono tracking-widest text-[#D7E2EA]/50 uppercase">
+              CERTIFICATION & ACHIEVEMENTS
+            </span>
+            <span className="text-xs sm:text-sm font-medium tracking-wide text-[#D7E2EA]">
+              NPTEL — EFFECTIVE WRITING (ELITE)
+            </span>
+            <div className="text-[11px] font-mono text-[#BBCCD7] flex flex-col gap-0.5 pt-0.5">
+              <span>• College Hackathons Participant</span>
+              <span>• Active in Sports</span>
+              <span>• School Vice Captain (Leader)</span>
+            </div>
+          </div>
+
+          {/* Detail Item 4: Strengths & Languages */}
           <div className="flex flex-col gap-1.5">
             <span className="text-[10px] sm:text-xs font-mono tracking-widest text-[#BBCCD7] uppercase font-semibold">
-              CURRENTLY
+              STRENGTHS & LANGUAGES
             </span>
             <div className="text-[11px] sm:text-xs font-mono tracking-wide text-[#D7E2EA]/90 flex flex-col gap-1">
-              <span>• Building web applications</span>
-              <span>• Exploring AI & IoT</span>
-              <span>• Learning by shipping projects</span>
+              <span>• English, Hindi, Nepali, Maithli</span>
+              <span>• Quick Learner & Team Player</span>
+              <span>• Adaptability & Communication</span>
+              <span>• Time Management</span>
             </div>
           </div>
         </FadeIn>
