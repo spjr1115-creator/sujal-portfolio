@@ -31,6 +31,15 @@ const projectVisuals: ProjectVisual[] = [
     techStack: ['HTML', 'Java', 'Firebase'],
   },
   {
+    id: 'ecoquest',
+    title: 'EcoQuest',
+    category: 'Gamified Environmental Tracker',
+    badge: 'SUSTAINABILITY',
+    gradient: 'from-[#052C1C] via-[#0F4E30] to-[#0C0C0C]',
+    accentColor: '#62e59a',
+    techStack: ['JavaScript', 'HTML5', 'CSS3'],
+  },
+  {
     id: 'zayathon',
     title: 'Zayathon Redesign',
     category: 'Cinematic Hackathon Platform',
